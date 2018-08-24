@@ -1,6 +1,41 @@
+<h4>Utilizar JQuery dentro de Angular</h4>
+<button id="buttonjq">Mostrar Texto</button>
+<p id="textojq" class="alert alert-warning">
+    This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+</p>
+
+<div id="caja" style="border: 1px solid black; width: 150px; height: 50px;">
+    This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+</div>
+
+<hr/>
+Padre:
 <h1>{{titulo}}</h1>
 <ul>
     <li>Camiseta Roja</li>
     <li>Gorra Negra</li>
     <li>Pantalon Jean</li>
 </ul>
+<hr/>
+<p>
+    Nombre del Parque:
+    <input type="text" [(ngModel)]="nombreDelParque" (keyup)="mostrarNombre()"/>
+</p>
+<p>
+    Resultado:{{nombreDelParque}}
+</p>
+<div *ngIf="miParque">
+    <h4>Datos del Parque desde el Hijo</h4>
+    <ol >
+        <li>{{miParque.nombre}}</li>
+        <li>{{miParque.metros}}</li>
+        <li>{{miParque.vegetacion}}</li>
+        <li>{{miParque.abierto}}</li>
+    </ol>
+</div>
+<hr/>
+<p *ngIf="nombreDelParque">
+    Hijo:
+    <parques [nombre]="nombreDelParque" [metros_cuadrados]="567"
+    (pasameLosDatos)="verDatosParque($event)"></parques>
+</p>
